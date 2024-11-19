@@ -20,10 +20,7 @@ eye.addEventListener("change", function() {
 
 
 /******************** récupérer les data session storage ********************/
-let registerBtn = document.getElementById("register-btn-register");
-registerBtn.addEventListener("click", function() {
-    verification();
-});
+
 
 let registerForm = document.getElementById("register-form");
  
@@ -42,23 +39,22 @@ function verification(event){
     let confirmedPswd = document.getElementById("confirmed-pswd").value;
  
     // je vérifie que les pswd soient identiques
-    if (pswd !== confirmedPswd) {
-        alert("les mots de passe sont différents !")
-        };
-    
-    const user = {
-        username : userName,
-        mail : email,
-        passeword :pswd,
-        confirmedPassword: confirmedPswd
-    };
+    if (pswd === confirmedPswd) {
         //alert("Votre inscription a bien été enregistrée !");
+        console.log("Inscription réussie !");
         //j'ajoute les datas dans le sessionStorage
-        localStorage.setItem(email,JSON.stringify(user));
-        alert("Inscription réussie !");
+        localStorage.setItem("nom", userName);
+        localStorage.setItem("email", email);
+        localStorage.setItem("mot de passe", pswd);
+        // je redirige vers la page login si connexion réussi
         document.location.href="login.html";
- 
-};
+        
+    } else {        
+        console.log("les mots de passe sont différents !")
+    }
+}
+
+
     
 
 
